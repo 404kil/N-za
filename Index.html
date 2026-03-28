@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MINIMAL • Néza</title>
+  <style>
+    :root {
+      --accent: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-y: auto;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      color: #ffffff;
+      background: #0a0a0a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* Sfondo con sfere sfocate */
+    .spheres-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -2;
+    }
+
+    .sphere {
+      position: absolute;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.35), transparent 70%);
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.45;
+      animation: float-slow linear infinite;
+      will-change: transform;
+    }
+
+    .sphere1 { width: 420px; height: 420px; top: -10%; left: -15%; animation-duration: 85s; animation-delay: -10s; }
+    .sphere2 { width: 520px; height: 520px; bottom: -20%; right: -10%; animation-duration: 110s; animation-delay: -40s; }
+    .sphere3 { width: 280px; height: 280px; top: 20%; right: -20%; animation-duration: 95s; animation-delay: -25s; }
+    .sphere4 { width: 380px; height: 380px; top: 60%; left: -25%; animation-duration: 120s; animation-delay: -60s; }
+    .sphere5 { width: 450px; height: 450px; bottom: 30%; left: 10%; animation-duration: 75s; animation-delay: -5s; }
+
+    @keyframes float-slow {
+      0%   { transform: translate(0, 0) rotate(0deg); }
+      25%  { transform: translate(80px, -60px) rotate(5deg); }
+      50%  { transform: translate(-50px, 90px) rotate(-8deg); }
+      75%  { transform: translate(70px, -40px) rotate(4deg); }
+      100% { transform: translate(0, 0) rotate(0deg); }
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 10, 10, 0.65);
+      z-index: -1;
+    }
+
+    .container {
+      text-align: center;
+      z-index: 10;
+      padding: 2rem 1.5rem;
+      max-width: 480px;
+      width: 100%;
+    }
+
+    .profile {
+      margin-bottom: 2.5rem;
+    }
+
+    .avatar {
+      width: 128px;
+      height: 128px;
+      border-radius: 50%;
+      border: 4px solid rgba(255,255,255,0.3);
+      margin: 0 auto 1.2rem;
+      background: #222;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 0 40px rgba(255,255,255,0.2);
+    }
+
+    h1 {
+      font-size: 3.8rem;
+      font-weight: 200;
+      letter-spacing: -0.06em;
+      margin-bottom: 0.6rem;
+      text-shadow: 0 0 30px rgba(255,255,255,0.25);
+    }
+
+    .logo {
+      width: 180px;
+      max-width: 90%;
+      height: auto;
+      margin: 0 auto 2.5rem;
+      opacity: 0.95;
+      filter: drop-shadow(0 0 20px rgba(255,255,255,0.25));
+    }
+
+    .tagline {
+      font-size: 1.25rem;
+      opacity: 0.85;
+      margin-bottom: 3rem;
+      text-shadow: 0 2px 15px rgba(0,0,0,0.8);
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .link-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: rgba(255,255,255,0.08);
+      color: white;
+      text-decoration: none;
+      font-size: 1.15rem;
+      font-weight: 500;
+      padding: 18px 24px;
+      border-radius: 60px;
+      border: 1.5px solid rgba(255,255,255,0.15);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      backdrop-filter: blur(10px);
+    }
+
+    .link-btn:hover {
+      background: rgba(255,255,255,0.18);
+      border-color: rgba(255,255,255,0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(255,255,255,0.15);
+    }
+
+    .link-btn i {
+      font-size: 1.4rem;
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 3.2rem; }
+      .avatar { width: 110px; height: 110px; }
+      .logo { width: 150px; }
+      .link-btn { font-size: 1.05rem; padding: 16px 20px; }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Sfondo sfere -->
+  <div class="spheres-bg">
+    <div class="sphere sphere1"></div>
+    <div class="sphere sphere2"></div>
+    <div class="sphere sphere3"></div>
+    <div class="sphere sphere4"></div>
+    <div class="sphere sphere5"></div>
+  </div>
+
+  <div class="overlay"></div>
+
+  <div class="container">
+    <div class="profile">
+      <h1>Néza</h1>
+      
+      <!-- Logo -->
+      <img src="file1.png" alt="Logo Néza" class="logo">
+    </div>
+
+    <div class="links">
+      <a href="https://www.instagram.com/neza.mhb/" target="_blank" rel="noopener" class="link-btn">
+        <i class="fab fa-instagram"></i>
+        Instagram
+      </a>
+      
+      <a href="https://www.tiktok.com/@neza.mhb1" target="_blank" rel="noopener" class="link-btn">
+        <i class="fab fa-tiktok"></i>
+        TikTok
+      </a>
+      
+      <a href="https://open.spotify.com/artist/6cE2WyjXwngsJynb3uk1WO" target="_blank" rel="noopener" class="link-btn">
+        <i class="fab fa-spotify"></i>
+        Ascolta su Spotify
+      </a>
+      
+      <a href="https://www.youtube.com/@neza.mhb1" target="_blank" rel="noopener" class="link-btn">
+        <i class="fab fa-youtube"></i>
+        YouTube
+      </a>
+      
+      <a href="https://music.apple.com/it/artist/n%C3%A9za/1628779973" target="_blank" rel="noopener" class="link-btn">
+        <i class="fab fa-apple"></i>
+        Apple Music
+      </a>
+      
+      <a href="https://music.youtube.com/channel/UCGRz3ZDcaNLpW3e1PHoIzWw" target="_blank" rel="noopener" class="link-btn">
+        <i class="fab fa-youtube"></i>
+        YouTube Music
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>
